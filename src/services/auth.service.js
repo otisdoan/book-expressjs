@@ -18,7 +18,7 @@ const loginService = async (body) => {
   const passwordValid = await bcrypt.compare(password, user.password);
   if (!passwordValid) return res.status(401).json('Password wrong!');
   const accessToken = jwt.sign(
-    { _id: user._id, username: user.username },
+    { _id: user._id, username: user.username, role: user.role },
     process.env.JWT_ACCESS_TOKEN,
     { expiresIn: '5m' }
   );

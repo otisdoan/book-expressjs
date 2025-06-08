@@ -1,5 +1,5 @@
 
-const { registerService, loginService } = require("../services/auth.service")
+const { registerService, loginService, refreshTokenService } = require("../services/auth.service")
 
 const register = async (req, res) => {
   const newUser = await registerService(req.body);
@@ -19,7 +19,13 @@ const login = async (req, res) => {
     data: account
   })
 }
+
+const refreshToken = async (req, res) => {
+  await refreshTokenService(req.body);
+}
+
 module.exports = {
   register,
-  login
+  login,
+  refreshToken
 }

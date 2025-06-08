@@ -11,12 +11,17 @@ const registerService = async (body) => {
 }
 
 const loginService = async (body) => {
-  const { _id, username, password } = body;
-  console.log(_id)
+
+  const { username, password } = body;
+
   const user = await User.findOne({ username: username });
+
   if (!user) return res.status(404).json('Username is not found!');
+
   const passwordValid = await bcrypt.compare(password, user.password);
+
   if (!passwordValid) return res.status(401).json('Password wrong!');
+
   const accessToken = jwt.sign(
     { _id: user._id, username: user.username, role: user.role },
     process.env.JWT_ACCESS_TOKEN,
@@ -29,7 +34,13 @@ const loginService = async (body) => {
   )
   return { user, accessToken, refreshToken }
 }
+
+const refreshTokenService = (body) => {
+  console.log(body);
+}
+
 module.exports = {
   registerService,
-  loginService
+  loginService,
+  refreshTokenService
 }

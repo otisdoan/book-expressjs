@@ -20,8 +20,12 @@ const login = async (req, res) => {
   })
 }
 
-const refreshToken = async (req, res) => {
-  await refreshTokenService(req.body);
+const refreshToken = (req, res) => {
+  const results = refreshTokenService(req.body);
+  return res.status(200).json({
+    status: 'success',
+    data: results
+  })
 }
 
 module.exports = {

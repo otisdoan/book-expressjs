@@ -4,5 +4,6 @@ const { register, login, refreshToken } = require('../controllers/auth.controlle
 
 route.post('/register', register);
 route.post('/login', login);
-route.post('/refresh-token', refreshToken)
+route.post('/refresh-token', refreshToken);
+
 module.exports = route;

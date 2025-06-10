@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --inspect ./src/index.js"
+    "dev": "nodemon --inspect ./src/index.js",
+    "build": "echo 'No build needed'"
   },
   "author": "",
   "license": "ISC",
